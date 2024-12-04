@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { StudentProvider } from "./components/StudentContext"; // Import the provider
+import HomePage from "./components/HomePage";
+import ProjectDashboard from "./components/ProjectDashboard";
+import DepartmentPage from "./components/DepartmentPage";
+import ProfessorList from "./components/ProfessorList";
+import ProjectList from "./components/ProjectList";  // Importing ProjectList
+import './styles.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StudentProvider>
+      <div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/department" element={<DepartmentPage />} />
+          <Route path="/professors/:courseId" element={<ProfessorList />} />
+          <Route path="/projects/:courseId/:professorId" element={<ProjectList />} />
+          <Route path="/dashboard" element={<ProjectDashboard />} /> 
+          <Route path="/dashboard/:projectId" element={<ProjectDashboard />} />
+        </Routes>
+      </div>
+    </StudentProvider>
   );
 }
 
