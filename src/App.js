@@ -6,6 +6,7 @@ import ProjectDashboard from "./components/ProjectDashboard";
 import DepartmentPage from "./components/DepartmentPage";
 import ProfessorList from "./components/ProfessorList";
 import ProjectList from "./components/ProjectList";  // Importing ProjectList
+import CombinedPage from "./components/CombinedPage"; // Import the new CombinedPage
 import './styles.css';
 
 function App() {
@@ -14,11 +15,11 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/department" element={<DepartmentPage />} />
+          <Route path="/department" element={<CombinedPage />} /> {/* Update this route */}
           <Route path="/professors/:courseId" element={<ProfessorList />} />
           <Route path="/projects/:courseId/:professorId" element={<ProjectList />} />
           <Route path="/dashboard" element={<ProjectDashboard />} /> 
-          <Route path="/dashboard/:projectId" element={<ProjectDashboard />} />
+          <Route path="/new-project" element={<CombinedPage />} /> {/* New Project route */}
         </Routes>
       </div>
     </StudentProvider>
