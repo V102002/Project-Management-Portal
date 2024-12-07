@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Sample data for professors
 const professors = {
@@ -14,6 +15,7 @@ const professors = {
 };
 
 function CombinedPage() {
+  const navigate = useNavigate(); // Initialize the navigate function
   const courses = Object.keys(professors);
 
   return (
@@ -46,9 +48,23 @@ function CombinedPage() {
                     cursor: "pointer",
                     borderRadius: "5px",
                   }}
-                  onClick={() => alert(professor.info)} // Show info in an alert for now
+                  onClick={() => alert(professor.info)} // Show info in an alert
                 >
-                  Info
+                  More Info
+                </button>
+                <button
+                  style={{
+                    marginTop: "10px",
+                    padding: "5px 10px",
+                    border: "none",
+                    backgroundColor: "#28a745",
+                    color: "#fff",
+                    cursor: "pointer",
+                    borderRadius: "5px",
+                  }}
+                  onClick={() => navigate(`/projects/${course}/${professor.id}`)} // Navigate to ProjectList
+                >
+                  View Projects
                 </button>
               </div>
             ))}

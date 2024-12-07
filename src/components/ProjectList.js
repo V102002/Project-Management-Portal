@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { StudentContext } from "./StudentContext";
 
@@ -21,6 +21,13 @@ function ProjectList() {
 
   // State to manage available projects for each professor
   const [projects, setProjects] = useState(initialProjects[professorId] || []);
+
+  // Debugging logs
+  useEffect(() => {
+    console.log("Course ID:", courseId);
+    console.log("Professor ID:", professorId);
+    console.log("Projects for this professor:", projects);
+  }, [courseId, professorId, projects]);
 
   // Filter out projects already selected by the student
   const availableProjects = projects.filter(
