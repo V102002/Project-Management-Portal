@@ -1,18 +1,24 @@
+// src/components/HomePage.js
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { StudentContext } from "./StudentContext";
 
 function HomePage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { studentProjects } = useContext(StudentContext);
+  
+  // Get the student's name from the location state
+  const studentName = location.state?.name || "Student"; // Default to "Student" if name is not provided
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Student Home Page</h1>
+      <h1>Hi {studentName}</h1> {/* Personalized greeting */}
+      {/* Removed email display */}
 
       {/* "New Project" button */}
       <button
-        onClick={() => navigate("/department")}
+        onClick={() => navigate("/new-project")} // Updated to navigate to the new project page
         style={{
           marginBottom: "20px",
           padding: "10px 20px",
